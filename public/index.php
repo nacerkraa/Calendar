@@ -17,9 +17,20 @@
     ?>
 
     <?php echo $mounth->toString(). "<br><br>" ?>
+    <?php echo $mounth->getWeeks(); ?>
 
     <table>
-      <?php echo $mounth->getWeeks(); ?>
+      <?php for ($i=0; $i < $mounth -> getWeeks() ; $i++):?>
+        <tr>
+          <td>Lundi</td>
+          <td>Mardi</td>
+          <td>Mercredi</td>
+          <td>Judi</td>
+          <td>Vendredi</td>
+          <td>Samedi</td>
+          <td>Dimanche</td>
+        </tr>
+      <?php endfor;?>
     </table>
   </body>
 </html>
