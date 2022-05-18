@@ -15,9 +15,8 @@
       $mounth = new App\Date\Mounth($_GET['mounth'] ?? null,$_GET['year'] ?? null);
 
     ?>
-    <h1>nacer kraa</h1>
-    <?php echo $mounth->toString(). "<br><br>" ?>
-    <?php echo $mounth->getWeeks(); ?>
+    <h1><?php echo $mounth->toString()?></h1>
+
 
     <table class="calander-table">
       <?php for ($i=0; $i < $mounth -> getWeeks() ; $i++):?>

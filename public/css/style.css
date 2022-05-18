@@ -4,6 +4,7 @@ h1{
 
 .calander-table{
   width: 100%;
+  height: calc(100vh - 128px)
 }
 
 .calander-table td{
