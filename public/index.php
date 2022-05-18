@@ -10,6 +10,11 @@
     <nav class="navbar navbar-dark bg-primary nb-3">
       <a href="/index.php" class="navbar-brand">My Calander</a>
     </nav>
-    <h1>Mars 2022</h1>
+    <?php
+      require "../src/Date/Mounth.php";
+      $mounth = new App\Date\Mounth(13, 2022);
+    ?>
+
+    <?php echo $mounth->toString(); ?>
   </body>
 </html>
