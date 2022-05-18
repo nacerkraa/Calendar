@@ -1,7 +1,14 @@
+h1{
+  color: red;
+}
+
 .calander-table{
   width: 100%;
 }
 
-h1{
-  color: red;
+.calander-table td{
+  padding: 10px;
+  border: 1px solid #ccc;
+  vertical-align: top;
+  width: 14.29%;
 }
