@@ -20,7 +20,13 @@ namespace App\Date;
         $year = intval(date('Y'));
       }
 
-      if ($mounth < 1 || $mounth > 12) {
+
+
+      if ($mounth > 12) {
+          $mounth = $mounth % 12;
+      }
+
+      if ($mounth < 1) {
         throw new \Exception("Le moin". $mounth ." nest pas valide");
       }
 

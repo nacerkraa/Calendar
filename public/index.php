@@ -12,12 +12,7 @@
     </nav>
     <?php
       require "../src/Date/Mounth.php";
-      try {
-        $mounth = new App\Date\Mounth($_GET['mounth'] ?? null,$_GET['year'] ?? null);
-      } catch (\Exception $e) {
-
-      }
-
+      $mounth = new App\Date\Mounth($_GET['mounth'] ?? null,$_GET['year'] ?? null);
 
     ?>
 
