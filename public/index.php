@@ -16,6 +16,10 @@
 
     ?>
 
-    <?php echo $mounth->toString(); ?>
+    <?php echo $mounth->toString(). "<br><br>" ?>
+
+    <table>
+      <?php echo $mounth->getWeeks(); ?>
+    </table>
   </body>
 </html>

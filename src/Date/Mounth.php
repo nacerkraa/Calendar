@@ -43,6 +43,20 @@ namespace App\Date;
       return $this-> mounths[$this->mounth -1 ]. ' ' . $this->year;
     }
 
+    public function getWeeks():int
+    {
+      $start = new \DateTime("{$this->year}-{$this->mounth}-01");
+      $end = (clone $start) -> modify('+1 month -1 day');
+
+      $weeks = intval($end->format('W')) - intval($start -> format('W')) + 1;
+      if ($weeks < 0) {
+        $weeks = intval($end->format('W'));
+      }
+
+      return $weeks;
+
+    }
+
   }
 
  ?>
