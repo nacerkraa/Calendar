@@ -1,35 +1,53 @@
-<!DOCTYPE html>
-<html lang="en" dir="ltr">
-  <head>
-    <meta charset="utf-8">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
-    <link rel="stylesheet" href="css/style.css">
-    <title>Calander</title>
-  </head>
-  <body>
-    <nav class="navbar navbar-dark bg-primary nb-3">
-      <a href="/index.php" class="navbar-brand">My Calander</a>
-    </nav>
-    <?php
-      require "../src/Date/Mounth.php";
-      $mounth = new App\Date\Mounth($_GET['mounth'] ?? null,$_GET['year'] ?? null);
+<!Doctype html>
+<html>
+<head>
+    <meta charset="UTF-8" >
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/calendar.css">
+    <title>Calendar | Home</title>
+</head>
+<body>
+  <nav class="navbar navbar-dark bg-primary mb-3">
+      <a href="/index.php" class="navbar-brand">Mon Calendrier</a>
+  </nav>
+  <?php
+    require '../src/Date/Month.php';
+    $month = new App\Date\Month($_GET['month'] ?? null, $_GET['year'] ?? null);
+    $start = $month -> getStartingDay()-> modify('last monday');
+  ?>
 
-    ?>
-    <h1><?php echo $mounth->toString()?></h1>
+  <div class="d-flex flex-row align-items-center justify-content-between mx-sm-3" >
+      <h1><?= $month->toString();?></h1>
+      <div>
+          <a href="index.php?month=<?= $month->previousMonth()->month;?>&$year=<?= $month->previousMonth()->year;?>" class="btn btn-primary">&lt;</a>
+          <a href="index.php?month=<?= $month->nextMonth()->month; ?>&$year=<?= $month->nextMonth()->year;?>" class="btn btn-primary">&gt;</a>
+      </div>
+  </div>
+
+<table class="calander__table calander__table--<?= $month->getWeeks();?>weeks">
+<?php for ($i = 0; $i < $month->getWeeks();$i++): ?>
+      <tr>
+        <?php foreach ($month -> days as $k => $day):
+          $date = (clone $start) -> modify("+" . ($k + $i * 7) . " days");
+        ?>
+          <td class="<?= $month -> withinMonth($date) ? '' : 'calander__othermonth';?>">
+
+            <?php if ($i === 0): ?>
+              <div class="calendar__weekdays"><?= $day ?></div>
+            <?php endif; ?>
 
 
-    <table class="calander-table">
-      <?php for ($i=0; $i < $mounth -> getWeeks() ; $i++):?>
-        <tr>
-          <td>Lundi</td>
-          <td>Mardi</td>
-          <td>Mercredi</td>
-          <td>Judi</td>
-          <td>Vendredi</td>
-          <td>Samedi</td>
-          <td>Dimanche</td>
-        </tr>
-      <?php endfor;?>
-    </table>
-  </body>
+            <div class="calendar__day">
+              <?= $date -> format('d'); ?>
+            </div>
+
+
+
+          </td>
+        <?php endforeach; ?>
+      </tr>
+    <?php endfor; ?>
+</table>
+
+</body>
 </html>
