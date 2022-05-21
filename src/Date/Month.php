@@ -10,7 +10,6 @@ class Month{
      * @param int $month
      * @param int $year
      * @return void
-     * @throws
      */
 
     public function __construct (?int $month = null ,?int $year = null)
