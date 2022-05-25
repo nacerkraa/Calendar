@@ -1,5 +1,5 @@
 h1{
-  color: aqua
+  color: red
 }
 
 .calander__table{
@@ -21,7 +21,7 @@ h1{
 
 .calendar__weekdays{
   font-weight: bold;
-  color: #0f1;
+  color: #000;
   font-size: 1.2em;
 }
 
